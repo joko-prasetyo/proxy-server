@@ -16,6 +16,7 @@ app.post("/", async (req, res) => {
       },
       method: "GET",
     };
+    console.log(url);
     const response = await fetch(url, options);
     res.send(await response.json());
   } catch (e) {
