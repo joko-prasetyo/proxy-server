@@ -19,7 +19,8 @@ app.post("/", async (req, res) => {
     const response = await fetch(url, options);
     res.send(await response.json());
   } catch (e) {
-    res.status(500).send(e);
+    console.log(e);
+    res.status(500).send(e.toString());
   }
 });
 
