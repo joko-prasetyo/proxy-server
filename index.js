@@ -5,8 +5,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use((req, res, next) => {
+  console.log("called");
   res.set("Content-Type", "application/json");
   res.set("Accept", "application/json");
+  res.set("Host", req.headers["host"]);
   return next();
 });
 
@@ -16,7 +18,7 @@ app.post("/", async (req, res) => {
     console.log(req.headers);
     const response = await fetch(body.url, {
       headers,
-      method: body.method
+      method: body.method,
     });
     res.send(await response.json());
   } catch (e) {
