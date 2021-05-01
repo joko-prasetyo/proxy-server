@@ -4,6 +4,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.set('Content-Type', 'application/json');
+    res.set('Accept', "application/json");
+    return next();
+})
+
 app.post("/", async (req, res) => {
   try {
     const { url } = req.body;
