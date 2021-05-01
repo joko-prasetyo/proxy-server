@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors-anywhere": "^0.4.4"
+    "cors-anywhere": "^0.4.4",
+    "express": "^4.17.1",
+    "http-proxy": "^1.11.1",
+    "node-fetch": "^2.6.1"
   }
 }
