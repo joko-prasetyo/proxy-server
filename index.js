@@ -5,25 +5,19 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use((req, res, next) => {
-    res.set('Content-Type', 'application/json');
-    res.set('Accept', "application/json");
-    return next();
-})
+  res.set("Content-Type", "application/json");
+  res.set("Accept", "application/json");
+  return next();
+});
 
 app.post("/", async (req, res) => {
   try {
-    const { url } = req.body;
-    let options = {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; Rigor/1.0.0; http://rigor.com)",
-        Accept: "*/*",
-        Host: "www.blibli.com",
-        "Content-Type": "application/json",
-      },
-      method: "GET",
-    };
-    console.log(url);
-    const response = await fetch(url, options);
+    const { headers, body } = req;
+    console.log(req.headers);
+    const response = await fetch(body.url, {
+      headers,
+      method: body.method
+    });
     res.send(await response.json());
   } catch (e) {
     console.log(e);
