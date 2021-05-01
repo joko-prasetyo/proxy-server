@@ -6,18 +6,16 @@ app.use(express.json());
 
 app.post("/", async (req, res) => {
   try {
-    const { headers, body } = req;
-    console.log(req.headers);
+    const { headers } = req;
+    const { method, url } = req.body;
     let options = {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; Rigor/1.0.0; http://rigor.com)",
-        Accept: "*/*",
-        "Content-Type": "application/json",
-      },
-      method: "GET",
+      headers,
+      method,
     };
 
-    const response = await fetch(body.url, options);
+    delete headers["host"];
+
+    const response = await fetch(url, options);
     res.send(await response.json());
   } catch (e) {
     console.log(e);
