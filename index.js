@@ -19,7 +19,7 @@ app.get("/:url", async (req, res) => {
     console.log(e);
     res.status(500).send(e.toString());
   }
-});
+}); 
 
 app.post("/:url", async (req, res) => {
   try {
