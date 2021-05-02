@@ -30,7 +30,7 @@ app.post("/:url", async (req, res) => {
     const response = await fetch(url, {
       headers,
       body: JSON.stringify(body),
-      method: "POST"
+      method: "POST" 
     }); 
 
     res.send(await response.json());
